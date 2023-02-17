@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes, Link} from 'react-router-dom';
 import axios from 'axios';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
@@ -21,6 +21,13 @@ function App() {
 
   return (
         <div className="App">
+          <header>
+            <h2>Friends Database</h2>
+            <Link className="link" to="login">Login </Link>
+            <Link className="link" to="friends">Friends List </Link>
+            <Link className="link" to="friends/add">Add Friend </Link>
+            <Link className="link" to="logout">Logout </Link>
+          </header>
           <Routes>
             <Route path="/" element={<Login/>}/>
             <Route path="/login" element={<Login/>}/>
