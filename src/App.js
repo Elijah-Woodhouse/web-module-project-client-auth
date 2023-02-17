@@ -26,7 +26,7 @@ function App() {
             <Link className="link" to="login">Login </Link>
             <Link className="link" to="friends">Friends List </Link>
             <Link className="link" to="friends/add">Add Friend </Link>
-            <Link className="link" to="logout">Logout </Link>
+            <Link className="link" to="login">Logout </Link>
           </header>
           <Routes>
             <Route path="/" element={<Login/>}/>
