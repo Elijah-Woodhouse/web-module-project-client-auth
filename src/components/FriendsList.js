@@ -17,14 +17,16 @@ const FriendsList = () => {
                 setFriends(res.data);
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.response.status);
             })
     }, []);
 
-    console.log(friends);
+    //console.log(friends);
+    //console.log(response);
 
 
     return(
+        
     <div>
         <h2>FriendsList</h2>
        

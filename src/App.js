@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Route, Routes, Link} from 'react-router-dom';
+import { Route, Routes, Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
 import AddFriend from './components/AddFriend';
 import Logout from './components/Logout';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
 
@@ -18,6 +19,12 @@ function App() {
   //     })
   //     .catch(err => console.log(err))
   // }
+
+  function Protected() {
+    if (!localStorage.getItem('token')) {
+      return <Navigate to="/login"/>
+    } return <FriendsList/>
+  }
 
 
   return (
@@ -32,7 +39,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/friends" element={<FriendsList/>}/>
+            <Route path="/friends" element={<Protected/>}/>
             <Route path="/friends/add" element={<AddFriend/>}/>
             <Route path="/logout" element={<Logout/>}/>
           </Routes>
