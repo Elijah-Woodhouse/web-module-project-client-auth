@@ -20,12 +20,23 @@ function App() {
   //     .catch(err => console.log(err))
   // }
 
-  function Protected() {
+  function ProtectedFriendsList() {
     if (!localStorage.getItem('token')) {
       return <Navigate to="/login"/>
     } return <FriendsList/>
   }
 
+  function ProtectedAddFriend() {
+    if (!localStorage.getItem('token')) {
+      return <Navigate to="/login"/>
+    } return <AddFriend/>
+  }
+
+  function ProtectedLogout() {
+    if (!localStorage.getItem('token')) {
+      return <Navigate to="/login"/>
+    } return <Logout/>
+  }
 
   return (
         <div className="App">
@@ -39,9 +50,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Login/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/friends" element={<Protected/>}/>
-            <Route path="/friends/add" element={<AddFriend/>}/>
-            <Route path="/logout" element={<Logout/>}/>
+            <Route path="/friends" element={<ProtectedFriendsList/>}/>
+            <Route path="/friends/add" element={<ProtectedAddFriend/>}/>
+            <Route path="/logout" element={<ProtectedLogout/>}/>
           </Routes>
         </div>
   );
